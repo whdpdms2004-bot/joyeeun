@@ -15,7 +15,9 @@ plt.rcParams['axes.unicode_minus'] = False
 
 class PensionData():
     def __init__(self, filepath):
-        self.df = pd.read_csv(os.path.join(filepath), encoding='cp949')
+        file_id='1uTiDGV-ZjO9oz1g_ye5shR8vOkMWkdHj'
+        url=f'https://drive.google.com/uc?export=download&id={file_id}'
+        self.df = pd.read_csv(url, encoding='cp949')
         self.pattern1 = '(\([^)]+\))'
         self.pattern2 = '(\[[^)]+\])'
         self.pattern3 = '[^A-Za-z0-9가-힣]'
@@ -73,7 +75,7 @@ class PensionData():
 
 @ st.cache_data
 def read_pensiondata():
-    data = PensionData('./data/national-pension.csv')
+    data = PensionData('')
     return data
 
 data = read_pensiondata()
